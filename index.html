@@ -3,28 +3,32 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Synopia — Loan coordination for temporary exhibitions</title>
+<title>Synopia · Loan coordination for temporary exhibitions</title>
 <meta name="description" content="Synopia coordinates the lending of artworks between museums, so temporary exhibitions come together without the back-and-forth." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --ivory:    #fdfcfa;
-    --ivory-2:  #f7f4ef;
+    --ivory:    #ffffff;
+    --ivory-2:  #fbfaf8;
     --ink:      #2a2622;
     --ink-soft: #6c645b;
     --ink-faint:#a59d93;
     --line:     rgba(42, 38, 34, 0.10);
 
-    /* mist palette */
-    --blush:   #f3d8cf;
-    --haze-blue:#cbd7e4;
-    --sage:    #d9e2d4;
-    --apricot: #f7e4cd;
-    --lilac:   #ded6e6;
+    /* sinopia: the red-ochre pigment of a fresco's underdrawing; the signature accent */
+    --sinopia:      #c2674e;
+    --sinopia-deep: #a8492f;
+
+    /* mist palette: warm sinopia-leaning haze with a cool periwinkle counterpoint */
+    --blush:   #eecabd;
+    --haze-blue:#d2d6ea;
+    --sage:    #eccabb;
+    --apricot: #f0d4c4;
+    --lilac:   #ddd5e8;
 
     --display: "Fraunces", Georgia, serif;
     --body: "Instrument Sans", -apple-system, sans-serif;
@@ -36,6 +40,7 @@
 
   body {
     font-family: var(--body);
+    font-weight: 440;
     background: var(--ivory);
     color: var(--ink);
     line-height: 1.55;
@@ -50,13 +55,13 @@
     position: fixed;
     inset: -20vmax;
     z-index: -2;
-    filter: blur(90px) saturate(112%);
+    filter: blur(120px) saturate(115%);
     pointer-events: none;
   }
   .blob {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.66;
+    opacity: 0.78;
     mix-blend-mode: multiply;
   }
   .blob.a {
@@ -103,18 +108,8 @@
     50%     { transform: translate(4vmax, -6vmax) scale(1.1); }
   }
 
-  /* grain overlay for soft, photographic texture */
-  .grain {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.045;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
   /* ============ LAYOUT ============ */
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 0 56px; }
 
   header {
     position: absolute;
@@ -129,7 +124,7 @@
   }
   .wordmark {
     font-family: var(--display);
-    font-weight: 500;
+    font-weight: 450;
     font-size: 1.32rem;
     letter-spacing: 0.02em;
     color: var(--ink);
@@ -140,7 +135,7 @@
   }
   .wordmark .dot {
     width: 9px; height: 9px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--blush), var(--haze-blue));
+    background: linear-gradient(135deg, var(--sinopia), var(--sinopia-deep));
     box-shadow: 0 0 0 4px rgba(255,255,255,0.5);
   }
   .nav-links {
@@ -174,7 +169,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 180px 0 140px;
+    padding: 180px 0 130px;
   }
   .eyebrow {
     display: inline-flex;
@@ -190,19 +185,27 @@
   }
   .eyebrow .pip {
     width: 6px; height: 6px; border-radius: 50%;
-    background: var(--ink-soft);
+    background: var(--sinopia);
   }
 
   h1 {
     font-family: var(--display);
-    font-weight: 340;
-    font-size: clamp(2.9rem, 7.6vw, 6.6rem);
-    line-height: 0.99;
+    font-weight: 450;
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    line-height: 1.08;
     letter-spacing: -0.02em;
     max-width: 16ch;
+    text-wrap: balance;
     color: var(--ink);
   }
-  h1 .line { display: block; overflow: hidden; }
+  /* padding + matching negative margin gives glyphs room inside the
+     overflow-clipped line without opening gaps between the lines */
+  h1 .line {
+    display: block;
+    overflow: hidden;
+    padding: 0.08em 0.06em;
+    margin: -0.08em -0.06em;
+  }
   h1 .line span {
     display: block;
     transform: translateY(110%);
@@ -213,8 +216,8 @@
   h1 .line:nth-child(3) span { animation-delay: 0.36s; }
   h1 em {
     font-style: italic;
-    font-weight: 340;
-    background: linear-gradient(105deg, #b98a78, #7e94ad 55%, #8aa185);
+    font-weight: 440;
+    background: linear-gradient(102deg, var(--sinopia-deep), var(--sinopia) 90%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -224,7 +227,7 @@
     margin-top: 44px;
     font-size: clamp(1.02rem, 1.45vw, 1.22rem);
     color: var(--ink-soft);
-    max-width: 46ch;
+    max-width: 52ch;
     line-height: 1.7;
     opacity: 0;
     animation: rise 1s 0.6s cubic-bezier(.2,.7,.2,1) forwards;
@@ -255,6 +258,7 @@
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 38px -12px rgba(42,38,34,0.55); }
   .btn-text {
+    font-family: var(--body);
     font-size: 0.97rem;
     color: var(--ink);
     text-decoration: none;
@@ -262,6 +266,10 @@
     align-items: center;
     gap: 9px;
     transition: gap 0.25s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
   }
   .btn-text:hover { gap: 14px; }
   .btn-text .arrow { transition: transform 0.25s ease; }
@@ -297,17 +305,18 @@
 
   /* ============ FEATURES ============ */
   .features {
-    padding: 180px 0 160px;
+    padding: 200px 0;
     position: relative;
   }
   .section-head {
-    max-width: 30ch;
-    margin-bottom: 96px;
+    max-width: none;
+    margin-bottom: 64px;
   }
+  .section-head h2 { max-width: 24ch; text-wrap: balance; }
   .section-head .eyebrow { animation: none; opacity: 1; margin-bottom: 22px; }
   .section-head h2 {
     font-family: var(--display);
-    font-weight: 340;
+    font-weight: 450;
     font-size: clamp(2rem, 4.4vw, 3.4rem);
     line-height: 1.04;
     letter-spacing: -0.018em;
@@ -326,20 +335,21 @@
   .feature {
     background: rgba(255,255,255,0.42);
     backdrop-filter: blur(8px);
-    padding: 56px 50px 60px;
+    padding: 40px 38px 44px;
     transition: background 0.3s ease;
   }
   .feature:hover { background: rgba(255,255,255,0.78); }
   .feature .num {
     font-family: var(--display);
+    font-style: italic;
     font-size: 0.82rem;
     letter-spacing: 0.16em;
-    color: var(--ink-faint);
+    color: var(--sinopia);
     margin-bottom: 26px;
   }
   .feature h3 {
     font-family: var(--display);
-    font-weight: 440;
+    font-weight: 450;
     font-size: 1.4rem;
     letter-spacing: -0.01em;
     margin-bottom: 12px;
@@ -354,30 +364,31 @@
 
   /* ============ CONTACT ============ */
   .contact {
-    padding: 60px 0 180px;
+    padding: 320px 0 220px;
   }
   .contact-card {
     position: relative;
     border-radius: 24px;
     border: 1px solid var(--line);
-    padding: 112px 48px 116px;
+    padding: 80px 48px 84px;
     text-align: center;
     overflow: hidden;
     background:
-      radial-gradient(60% 120% at 20% 0%, rgba(243,216,207,0.6), transparent 62%),
-      radial-gradient(70% 130% at 85% 20%, rgba(203,215,228,0.56), transparent 62%),
-      radial-gradient(60% 120% at 60% 100%, rgba(217,226,212,0.56), transparent 64%),
+      radial-gradient(60% 120% at 20% 0%, rgba(194,103,78,0.34), transparent 62%),
+      radial-gradient(70% 130% at 85% 20%, rgba(210,214,234,0.55), transparent 62%),
+      radial-gradient(60% 120% at 60% 100%, rgba(238,202,189,0.6), transparent 64%),
       rgba(255,255,255,0.34);
     backdrop-filter: blur(6px);
   }
   .contact-card h2 {
     font-family: var(--display);
-    font-weight: 340;
+    font-weight: 450;
     font-size: clamp(2rem, 5vw, 3.6rem);
     line-height: 1.02;
     letter-spacing: -0.02em;
     margin-bottom: 22px;
     color: var(--ink);
+    cursor: pointer;
   }
   .contact-card p {
     font-size: 1.05rem;
@@ -437,9 +448,11 @@
     .nav-links a:not(.nav-cta) { display: none; }
     .marks { grid-template-columns: 1fr; gap: 22px; margin-top: 64px; }
     .hero { padding: 130px 0 70px; }
+    h1 { white-space: normal; }
     .feature-grid { grid-template-columns: 1fr; }
-    .features { padding: 90px 0 80px; }
-    .contact-card { padding: 60px 26px 64px; }
+    .features { padding: 120px 0; }
+    .contact { padding: 120px 0 140px; }
+    .contact-card { padding: 48px 26px 52px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -457,7 +470,6 @@
     <div class="blob d"></div>
     <div class="blob e"></div>
   </div>
-  <div class="grain" aria-hidden="true"></div>
 
   <main>
     <section class="hero">
@@ -465,19 +477,16 @@
         <span class="eyebrow"><span class="pip"></span>Loan coordination for temporary exhibitions</span>
 
         <h1>
-          <span class="line"><span>The quiet work</span></span>
-          <span class="line"><span>behind every</span></span>
-          <span class="line"><span><em>borrowed</em> masterpiece.</span></span>
+          <span class="line"><span>Coordinate artwork loans with <em>Synopia</em>.</span></span>
         </h1>
 
         <p class="sub">
-          Synopia coordinates the lending of artworks between museums — requests,
-          conditions, insurance, and transit — so a temporary show comes together
-          without the months of back-and-forth.
+          One shared record for every loan: agreements, condition reports,
+          and transit, across both institutions.
         </p>
 
         <div class="actions">
-          <a href="#features" class="btn-text">See how it works <span class="arrow">→</span></a>
+          <button class="btn-text" id="heroContact" type="button">Contact <span class="arrow">→</span></button>
         </div>
       </div>
     </section>
@@ -485,30 +494,30 @@
     <section class="features" id="features">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow"><span class="pip"></span>What Synopia handles</span>
-          <h2>Everything a loan touches, in one shared record.</h2>
+          <span class="eyebrow"><span class="pip"></span>The loan lifecycle</span>
+          <h2>Everything a loan needs, in one record.</h2>
         </div>
 
         <div class="feature-grid">
           <div class="feature">
             <div class="num">01</div>
-            <h3>Loan requests</h3>
-            <p>Curators send and receive borrowing requests with dates, purpose, and the works in scope — no email chains to reconstruct later.</p>
+            <h3>Loan agreements</h3>
+            <p>Requests, terms, and objects, tracked across both institutions.</p>
           </div>
           <div class="feature">
             <div class="num">02</div>
-            <h3>Condition &amp; insurance</h3>
-            <p>Condition reports and insurance valuations live alongside the loan, visible to registrars on both sides as terms evolve.</p>
+            <h3>Condition &amp; indemnity</h3>
+            <p>Condition reports, insurance, and facility reports, per object.</p>
           </div>
           <div class="feature">
             <div class="num">03</div>
-            <h3>Availability calendar</h3>
-            <p>See when a work is free to travel before you plan the show around it. Conflicts surface early, not after the catalogue is printed.</p>
+            <h3>Object availability</h3>
+            <p>An object's loan calendar and prior commitments, at a glance.</p>
           </div>
           <div class="feature">
             <div class="num">04</div>
             <h3>Transit &amp; couriers</h3>
-            <p>Coordinate crating, shipping windows, and courier handoffs, with every approval logged against a single timeline.</p>
+            <p>Crating, transit, and courier handoffs, logged end to end.</p>
           </div>
         </div>
       </div>
@@ -517,12 +526,8 @@
     <section class="contact" id="contact">
       <div class="wrap">
         <div class="contact-card">
-          <h2>Bring a show together.</h2>
-          <p>Synopia is early and working with a small set of institutions. If coordinating loans is part of your work, get in touch.</p>
-          <div class="email-slot">
-            <button class="reveal-btn" id="revealBtn">Show contact email</button>
-            <span class="email" id="emailText"></span>
-          </div>
+          <h2 id="contactHeading">Contact</h2>
+          <p>Early, and building alongside a few museums.</p>
         </div>
       </div>
     </section>
@@ -541,28 +546,13 @@
     (function () {
       // Assemble the address from parts to keep it lightly obfuscated from scrapers.
       var user = "divkov", domain = "umich", tld = "edu";
-      var addr = user + " [at] " + domain + " [dot] " + tld;
+      var addr = user + "[at]" + domain + "[dot]" + tld;
 
-      var btn = document.getElementById("revealBtn");
-      var link = document.getElementById("emailText");
-
-      function reveal() {
-        link.textContent = addr;
-        link.classList.add("show");
-        if (btn) btn.style.display = "none";
-      }
-
-      if (btn) btn.addEventListener("click", reveal);
-
-      // Nav "Contact" scrolls to the section and reveals the address.
-      var navContact = document.getElementById("navContact");
-      if (navContact) {
-        navContact.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-          reveal();
-        });
-      }
+      // Both "Contact" triggers swap their own label for the address in place.
+      ["heroContact", "contactHeading"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener("click", function () { el.textContent = addr; });
+      });
     })();
   </script>
 
