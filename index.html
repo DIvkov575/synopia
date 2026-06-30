@@ -12,12 +12,12 @@
 
 <style>
   :root {
-    --ivory:    #faf8f4;
-    --ivory-2:  #f3efe8;
+    --ivory:    #fdfcfa;
+    --ivory-2:  #f7f4ef;
     --ink:      #2a2622;
     --ink-soft: #6c645b;
     --ink-faint:#a59d93;
-    --line:     rgba(42, 38, 34, 0.12);
+    --line:     rgba(42, 38, 34, 0.10);
 
     /* mist palette */
     --blush:   #f3d8cf;
@@ -50,13 +50,13 @@
     position: fixed;
     inset: -20vmax;
     z-index: -2;
-    filter: blur(60px) saturate(108%);
+    filter: blur(90px) saturate(112%);
     pointer-events: none;
   }
   .blob {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.54;
+    opacity: 0.66;
     mix-blend-mode: multiply;
   }
   .blob.a {
@@ -174,7 +174,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 140px 0 90px;
+    padding: 180px 0 140px;
   }
   .eyebrow {
     display: inline-flex;
@@ -184,7 +184,7 @@
     text-transform: uppercase;
     letter-spacing: 0.22em;
     color: var(--ink-soft);
-    margin-bottom: 30px;
+    margin-bottom: 44px;
     opacity: 0;
     animation: rise 0.9s 0.05s cubic-bezier(.2,.7,.2,1) forwards;
   }
@@ -221,17 +221,17 @@
   }
 
   .sub {
-    margin-top: 34px;
+    margin-top: 44px;
     font-size: clamp(1.02rem, 1.45vw, 1.22rem);
     color: var(--ink-soft);
     max-width: 46ch;
-    line-height: 1.6;
+    line-height: 1.7;
     opacity: 0;
     animation: rise 1s 0.6s cubic-bezier(.2,.7,.2,1) forwards;
   }
 
   .actions {
-    margin-top: 44px;
+    margin-top: 56px;
     display: flex;
     align-items: center;
     gap: 22px;
@@ -297,12 +297,12 @@
 
   /* ============ FEATURES ============ */
   .features {
-    padding: 130px 0 120px;
+    padding: 180px 0 160px;
     position: relative;
   }
   .section-head {
     max-width: 30ch;
-    margin-bottom: 72px;
+    margin-bottom: 96px;
   }
   .section-head .eyebrow { animation: none; opacity: 1; margin-bottom: 22px; }
   .section-head h2 {
@@ -324,9 +324,9 @@
     overflow: hidden;
   }
   .feature {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.42);
     backdrop-filter: blur(8px);
-    padding: 44px 40px 48px;
+    padding: 56px 50px 60px;
     transition: background 0.3s ease;
   }
   .feature:hover { background: rgba(255,255,255,0.78); }
@@ -354,20 +354,20 @@
 
   /* ============ CONTACT ============ */
   .contact {
-    padding: 40px 0 130px;
+    padding: 60px 0 180px;
   }
   .contact-card {
     position: relative;
     border-radius: 24px;
     border: 1px solid var(--line);
-    padding: 84px 48px 88px;
+    padding: 112px 48px 116px;
     text-align: center;
     overflow: hidden;
     background:
-      radial-gradient(60% 120% at 20% 0%, rgba(243,216,207,0.55), transparent 60%),
-      radial-gradient(70% 130% at 85% 20%, rgba(203,215,228,0.5), transparent 60%),
-      radial-gradient(60% 120% at 60% 100%, rgba(217,226,212,0.5), transparent 62%),
-      rgba(255,255,255,0.4);
+      radial-gradient(60% 120% at 20% 0%, rgba(243,216,207,0.6), transparent 62%),
+      radial-gradient(70% 130% at 85% 20%, rgba(203,215,228,0.56), transparent 62%),
+      radial-gradient(60% 120% at 60% 100%, rgba(217,226,212,0.56), transparent 64%),
+      rgba(255,255,255,0.34);
     backdrop-filter: blur(6px);
   }
   .contact-card h2 {
@@ -459,19 +459,6 @@
   </div>
   <div class="grain" aria-hidden="true"></div>
 
-  <header>
-    <div class="wrap">
-      <nav>
-        <a href="#" class="wordmark"><span class="dot"></span>Synopia</a>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#" class="contact-trigger" id="navContact">Contact</a>
-          <a href="#" class="nav-cta">Request access</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
   <main>
     <section class="hero">
       <div class="wrap">
@@ -490,23 +477,7 @@
         </p>
 
         <div class="actions">
-          <a href="#" class="btn-primary">Request access</a>
           <a href="#features" class="btn-text">See how it works <span class="arrow">→</span></a>
-        </div>
-
-        <div class="marks">
-          <div class="mark">
-            <div class="k">One loan, one thread</div>
-            <div class="v">Every condition report, insurance value, and approval in a single shared record.</div>
-          </div>
-          <div class="mark">
-            <div class="k">Built for the calendar</div>
-            <div class="v">Plan a show around what's actually available, when it's available.</div>
-          </div>
-          <div class="mark">
-            <div class="k">Institution to institution</div>
-            <div class="v">Registrars and curators on both sides, working from the same page.</div>
-          </div>
         </div>
       </div>
     </section>
@@ -561,7 +532,7 @@
     <div class="wrap">
       <div class="foot">
         <a href="#" class="wordmark"><span class="dot"></span>Synopia</a>
-        <span>Loan coordination for temporary exhibitions</span>
+        <span>© 2026</span>
       </div>
     </div>
   </footer>
