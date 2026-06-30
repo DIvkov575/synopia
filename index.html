@@ -55,13 +55,13 @@
     position: fixed;
     inset: -20vmax;
     z-index: -2;
-    filter: blur(120px) saturate(115%);
+    filter: blur(140px) saturate(80%);
     pointer-events: none;
   }
   .blob {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.78;
+    opacity: 0.42;
     mix-blend-mode: multiply;
   }
   .blob.a {
@@ -109,7 +109,7 @@
   }
 
   /* ============ LAYOUT ============ */
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 56px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 56px; }
 
   header {
     position: absolute;
@@ -169,7 +169,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 150px 0 110px;
+    padding: 120px 0 90px;
   }
   .eyebrow {
     display: inline-flex;
@@ -191,7 +191,7 @@
   h1 {
     font-family: var(--display);
     font-weight: 450;
-    font-size: clamp(2.3rem, 5vw, 4.2rem);
+    font-size: clamp(2rem, 4vw, 3.3rem);
     line-height: 1.08;
     letter-spacing: -0.02em;
     max-width: 16ch;
@@ -217,24 +217,21 @@
   h1 em {
     font-style: italic;
     font-weight: 440;
-    background: linear-gradient(102deg, var(--sinopia-deep), var(--sinopia) 90%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--sinopia-deep);
   }
 
   .sub {
-    margin-top: 44px;
-    font-size: clamp(1.02rem, 1.45vw, 1.22rem);
+    margin-top: 28px;
+    font-size: clamp(0.98rem, 1.2vw, 1.1rem);
     color: var(--ink-soft);
-    max-width: 52ch;
+    max-width: 50ch;
     line-height: 1.7;
     opacity: 0;
     animation: rise 1s 0.6s cubic-bezier(.2,.7,.2,1) forwards;
   }
 
   .actions {
-    margin-top: 56px;
+    margin-top: 36px;
     display: flex;
     align-items: center;
     gap: 22px;
@@ -305,19 +302,19 @@
 
   /* ============ FEATURES ============ */
   .features {
-    padding: 160px 0;
+    padding: 110px 0;
     position: relative;
   }
   .section-head {
     max-width: none;
-    margin-bottom: 64px;
+    margin-bottom: 48px;
   }
   .section-head h2 { max-width: 24ch; text-wrap: balance; }
   .section-head .eyebrow { animation: none; opacity: 1; margin-bottom: 22px; }
   .section-head h2 {
     font-family: var(--display);
     font-weight: 450;
-    font-size: clamp(1.8rem, 3.8vw, 2.9rem);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
     line-height: 1.04;
     letter-spacing: -0.018em;
     color: var(--ink);
@@ -335,7 +332,7 @@
   .feature {
     background: rgba(255,255,255,0.42);
     backdrop-filter: blur(8px);
-    padding: 40px 38px 44px;
+    padding: 30px 30px 32px;
     transition: background 0.3s ease;
   }
   .feature:hover { background: rgba(255,255,255,0.78); }
@@ -345,14 +342,14 @@
     font-size: 0.82rem;
     letter-spacing: 0.16em;
     color: var(--sinopia);
-    margin-bottom: 26px;
+    margin-bottom: 16px;
   }
   .feature h3 {
     font-family: var(--display);
     font-weight: 450;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     letter-spacing: -0.01em;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     color: var(--ink);
   }
   .feature p {
@@ -364,37 +361,37 @@
 
   /* ============ CONTACT ============ */
   .contact {
-    padding: 260px 0 180px;
+    padding: 180px 0 130px;
   }
   .contact-card {
     position: relative;
     border-radius: 24px;
     border: 1px solid var(--line);
-    padding: 80px 48px 84px;
+    padding: 56px 44px 58px;
     text-align: center;
     overflow: hidden;
     background:
-      radial-gradient(60% 120% at 20% 0%, rgba(194,103,78,0.34), transparent 62%),
-      radial-gradient(70% 130% at 85% 20%, rgba(210,214,234,0.55), transparent 62%),
-      radial-gradient(60% 120% at 60% 100%, rgba(238,202,189,0.6), transparent 64%),
-      rgba(255,255,255,0.34);
+      radial-gradient(60% 120% at 20% 0%, rgba(194,103,78,0.12), transparent 62%),
+      radial-gradient(70% 130% at 85% 20%, rgba(210,214,234,0.22), transparent 62%),
+      radial-gradient(60% 120% at 60% 100%, rgba(238,202,189,0.22), transparent 64%),
+      rgba(255,255,255,0.5);
     backdrop-filter: blur(6px);
   }
   .contact-card h2 {
     font-family: var(--display);
     font-weight: 450;
-    font-size: clamp(1.8rem, 4.2vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
     line-height: 1.02;
     letter-spacing: -0.02em;
-    margin-bottom: 22px;
+    margin-bottom: 14px;
     color: var(--ink);
     cursor: pointer;
   }
   .contact-card p {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
     color: var(--ink-soft);
     max-width: 44ch;
-    margin: 0 auto 38px;
+    margin: 0 auto;
   }
   .contact-trigger { cursor: pointer; }
   .reveal-btn {
@@ -474,15 +471,13 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <span class="eyebrow"><span class="pip"></span>Loan coordination for temporary exhibitions</span>
-
         <h1>
-          <span class="line"><span>Coordinate artwork loans with <em>Synopia</em>.</span></span>
+          <span class="line"><span>Plan exhibitions. Coordinate <em>painting exchanges</em>.</span></span>
         </h1>
 
         <p class="sub">
-          One shared record for every loan: agreements, condition reports,
-          and transit, across both institutions.
+          Synopia helps museums plan exhibitions and coordinate painting
+          exchanges between institutions, without the endless back-and-forth.
         </p>
 
         <div class="actions">
@@ -494,30 +489,29 @@
     <section class="features" id="features">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow"><span class="pip"></span>The loan lifecycle</span>
-          <h2>Everything a loan needs, in one record.</h2>
+          <h2>A faster way to plan together.</h2>
         </div>
 
         <div class="feature-grid">
           <div class="feature">
             <div class="num">01</div>
-            <h3>Loan agreements</h3>
-            <p>Requests, terms, and objects, tracked across both institutions.</p>
+            <h3>Plan exhibitions</h3>
+            <p>Shape a show, slot in the works you want, and see what is free to borrow.</p>
           </div>
           <div class="feature">
             <div class="num">02</div>
-            <h3>Condition &amp; indemnity</h3>
-            <p>Condition reports, insurance, and facility reports, per object.</p>
+            <h3>Coordinate exchanges</h3>
+            <p>Propose and agree painting exchanges between museums in one place.</p>
           </div>
           <div class="feature">
             <div class="num">03</div>
-            <h3>Object availability</h3>
-            <p>An object's loan calendar and prior commitments, at a glance.</p>
+            <h3>Check availability</h3>
+            <p>See each work's exhibition calendar and prior commitments at a glance.</p>
           </div>
           <div class="feature">
             <div class="num">04</div>
-            <h3>Transit &amp; couriers</h3>
-            <p>Crating, transit, and courier handoffs, logged end to end.</p>
+            <h3>Move it forward</h3>
+            <p>Keep terms, timing, and transit aligned across both institutions.</p>
           </div>
         </div>
       </div>
