@@ -51,61 +51,33 @@
   }
 
   /* ============ MIST LAYER ============ */
+  /* A wide multi-color gradient that slowly washes left-to-right across the page. */
   .mist {
     position: fixed;
-    inset: -20vmax;
+    inset: 0;
     z-index: -2;
-    filter: blur(140px) saturate(80%);
     pointer-events: none;
-  }
-  .blob {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.42;
-    mix-blend-mode: multiply;
-  }
-  .blob.a {
-    width: 60vmax; height: 60vmax;
-    background: radial-gradient(circle at 30% 30%, var(--blush), transparent 62%);
-    top: -8vmax; left: -6vmax;
-    animation: drift1 26s ease-in-out infinite;
-  }
-  .blob.b {
-    width: 66vmax; height: 66vmax;
-    background: radial-gradient(circle at 60% 40%, var(--haze-blue), transparent 60%);
-    top: -12vmax; right: -14vmax;
-    animation: drift2 32s ease-in-out infinite;
-  }
-  .blob.c {
-    width: 54vmax; height: 54vmax;
-    background: radial-gradient(circle at 50% 50%, var(--apricot), transparent 64%);
-    bottom: -16vmax; left: 14vmax;
-    animation: drift3 30s ease-in-out infinite;
-  }
-  .blob.d {
-    width: 50vmax; height: 50vmax;
-    background: radial-gradient(circle at 40% 60%, var(--sage), transparent 62%);
-    bottom: -20vmax; right: 4vmax;
-    animation: drift1 36s ease-in-out infinite reverse;
-  }
-  .blob.e {
-    width: 40vmax; height: 40vmax;
-    background: radial-gradient(circle at 50% 50%, var(--lilac), transparent 60%);
-    top: 30%; left: 38%;
-    animation: drift2 28s ease-in-out infinite;
+    filter: blur(40px) saturate(95%) brightness(0.94);
+    background: linear-gradient(
+      100deg,
+      var(--blush),
+      var(--haze-blue),
+      var(--apricot),
+      var(--lilac),
+      var(--sage),
+      var(--blush)
+    );
+    background-size: 300% 100%;
+    background-position: 0% 50%;
+    opacity: 0.6;
+    animation: wash 80s linear infinite;
+    will-change: background-position;
   }
 
-  @keyframes drift1 {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50%     { transform: translate(6vmax, 4vmax) scale(1.08); }
-  }
-  @keyframes drift2 {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50%     { transform: translate(-5vmax, 5vmax) scale(1.06); }
-  }
-  @keyframes drift3 {
-    0%,100% { transform: translate(0,0) scale(1); }
-    50%     { transform: translate(4vmax, -6vmax) scale(1.1); }
+  /* slides the oversized gradient sideways so the colors fluctuate across the bg */
+  @keyframes wash {
+    from { background-position:   0% 50%; }
+    to   { background-position: 300% 50%; }
   }
 
   /* ============ LAYOUT ============ */
@@ -453,20 +425,14 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .blob { animation: none; }
+    .mist { animation: none; }
     h1 .line span, .eyebrow, .sub, .actions, .marks { animation: none; opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
 
-  <div class="mist" aria-hidden="true">
-    <div class="blob a"></div>
-    <div class="blob b"></div>
-    <div class="blob c"></div>
-    <div class="blob d"></div>
-    <div class="blob e"></div>
-  </div>
+  <div class="mist" aria-hidden="true"></div>
 
   <main>
     <section class="hero">
